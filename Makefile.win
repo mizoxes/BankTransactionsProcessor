@@ -1,0 +1,57 @@
+# Project: CppProject
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = CppProject_private.res
+OBJ      = main.o Account.o AccountManager.o Date.o deposit.o transaction.o TransactionManager.o transfer.o withdraw.o $(RES)
+LINKOBJ  = main.o Account.o AccountManager.o Date.o deposit.o transaction.o TransactionManager.o transfer.o withdraw.o $(RES)
+LIBS     = -L"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/lib" -L"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"MizoUI/lib/" -lMizoUI -lgdi32
+INCS     = -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/include" -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"MizoUI/inc/"
+CXXINCS  = -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/include" -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/mizox/Desktop/files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"MizoUI/inc/"
+BIN      = CppProject.exe
+CXXFLAGS = $(CXXINCS) -std=c++0x
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Account.o: Account.cpp
+	$(CPP) -c Account.cpp -o Account.o $(CXXFLAGS)
+
+AccountManager.o: AccountManager.cpp
+	$(CPP) -c AccountManager.cpp -o AccountManager.o $(CXXFLAGS)
+
+Date.o: Date.cpp
+	$(CPP) -c Date.cpp -o Date.o $(CXXFLAGS)
+
+deposit.o: deposit.cpp
+	$(CPP) -c deposit.cpp -o deposit.o $(CXXFLAGS)
+
+transaction.o: transaction.cpp
+	$(CPP) -c transaction.cpp -o transaction.o $(CXXFLAGS)
+
+TransactionManager.o: TransactionManager.cpp
+	$(CPP) -c TransactionManager.cpp -o TransactionManager.o $(CXXFLAGS)
+
+transfer.o: transfer.cpp
+	$(CPP) -c transfer.cpp -o transfer.o $(CXXFLAGS)
+
+withdraw.o: withdraw.cpp
+	$(CPP) -c withdraw.cpp -o withdraw.o $(CXXFLAGS)
+
+CppProject_private.res: CppProject_private.rc icon.rc
+	$(WINDRES) -i CppProject_private.rc --input-format=rc -o CppProject_private.res -O coff 
+
